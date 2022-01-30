@@ -1,0 +1,112 @@
+import java.util.*;
+class Node < T >
+{
+  T data;
+    Node < T > next;
+    Node < T > prev;
+    Node (T data)
+  {
+    this.data = data;
+    this.next = null;
+    this.prev = null;
+  }
+     Node ()
+  {
+    //
+  }
+  public Node<Integer> takeInput ()
+  {
+    Scanner sc = new Scanner (System.in);
+    int data = sc.nextInt ();
+    
+    Node < Integer > head = null;
+    Node < Integer > tail = null;
+    while (data != -1)
+      {Node < Integer > currentNode = new Node < Integer > (data);
+        	if (head == null)
+        	  {
+        	    head = currentNode;
+        	    tail = currentNode;
+        	  }
+        	else
+        	  {
+        	    tail.next = currentNode;
+        	    currentNode.prev = tail;
+        	    tail = currentNode;
+        	  }
+	   data = sc.nextInt ();
+      }
+   return head;
+
+  }
+  public Node<Integer> swapTwoNodes(Node<Integer> head,int x,int y)
+  {
+      if (x == y)
+        {
+            return head;
+        }
+        // Search for x 
+        Node<Integer> prevX = null, currX = head;
+        while (currX != null && currX.data != x) {
+            prevX = currX;
+            currX = currX.next;
+        }
+ 
+        // Search for y 
+        Node<Integer> prevY = null, currY = head;
+        while (currY != null && currY.data != y) {
+            prevY = currY;
+            currY = currY.next;
+        }
+ 
+        // If either x or y is not present, just return current head
+        if (currX == null || currY == null)
+            return head;
+ 
+        // If x is not head of the linked list
+        if (prevX != null)
+            prevX.next = currY;
+        else // change new head
+            head = currY;
+ 
+        // If y is not head of linked list
+        if (prevY != null)
+            prevY.next = currX;
+        else // make x the new head
+            head = currX;
+ 
+        // Swap next references
+        Node temp = currX.next;
+        currX.next = currY.next;
+        currY.next = temp;
+        return head;
+  }
+
+}
+
+public class Main
+{
+  public static void main (String[]args)
+  {   Node obj=new Node();
+    Node<Integer>head=obj.takeInput();
+        Node<Integer>temp=head;
+        System.out.println("before swapTwoNodes");
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        Scanner sc=new Scanner(System.in);
+        System.out.println();
+         System.out.println("Enter two nodes for swapping");
+         int x=sc.nextInt();
+         int y=sc.nextInt();
+        head=obj.swapTwoNodes(head,x,y);
+        temp=head;
+        System.out.println("After swapTwoNodes");
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    
+  }
+}
