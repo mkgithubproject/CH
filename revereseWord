@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class ReverseWord {
+    public static String revesrseWord(String word){
+        if(word.length()==0){
+            return "";
+        }
+        String ans=revesrseWord(word.substring(0,word.length()-1));
+
+        return word.charAt(word.length()-1)+ans;
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter word");
+        String word=sc.next();
+        System.out.println("Reverse word :"+revesrseWord(word));
+    }
+}
