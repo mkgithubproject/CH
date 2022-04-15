@@ -1,3 +1,4 @@
+// At time of print list why am i not able to access User class variables. but able to toString method , ????? Doubt  
 public class UserLinkedList<T> {
     private  UserNode<T> head;
     private UserNode<T> tail;
