@@ -1,0 +1,4 @@
+Ana;Aguilera;43
+Blas;Smith;19
+Sam;Spears;33
+Ken;Charles;88
