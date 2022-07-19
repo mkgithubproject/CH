@@ -1,0 +1,61 @@
+def sumUpSaleAmount(saleAmount):#function for sum of total sales calculate
+    totalSum=0
+    for sale in saleAmount:
+        totalSum+=sale
+    return totalSum
+
+def yearlySale(saleAmount):# function for calculate yearly sales
+    totalSum=sumUpSaleAmount(saleAmount)
+    return 12*totalSum
+    
+def takeNameAndID():# function for reading name and id
+    inputData=input("Enter name and ID: ")
+    inputData=inputData.split();
+    name=inputData[0]
+    ID=inputData[1]
+    List=[]
+    List.append(name)
+    List.append(ID)
+    return List
+
+def choiceSelect():# select choice
+    choice=int(input("1-sum, 2-prod, 3-exit: "))
+    return choice
+    
+
+
+def main(saleAmount,nameAndID):# main function
+    monthlySale=float(input("Enter Sales Amount: "))# read Sales Amount
+    while monthlySale<0:# read till user does not enter positive value
+        monthlySale=float(input("Enter Sales Amount: "))
+    
+    saleAmount.append(monthlySale)# appned to saleAmount list
+    name_ID=takeNameAndID()# call function takeNameAndID
+    nameAndID.append(name_ID)# append to nameAndID list
+    print("List items:",len(saleAmount))# print length
+    print("--------------------------------------")
+    print("list of name and ID:",nameAndID)
+    print("Sales amount:",saleAmount)
+    print("--------------------------------------")
+    userWantContinue=input("Do you want to continue? ")
+    if userWantContinue=="y" or userWantContinue=="Y":
+        main(saleAmount,nameAndID)
+    else:
+        choice=choiceSelect()
+        if(choice==1):
+            print("Total sales of",str(saleAmount),":",str(sumUpSaleAmount(saleAmount)))
+        elif(choice==2):
+            print("Total sales per year of",str(saleAmount),":",str(yearlySale(saleAmount)))
+        elif(choice==3):
+            return
+        else:
+            print("Invalid choice...")
+        print("bye")
+        print("---------------------------------------")
+    
+if __name__ == '__main__':
+    saleAmount=[]#list for saleAmount
+    nameAndID=[]#list for name and id
+    main(saleAmount,nameAndID)# call main function
+
+
