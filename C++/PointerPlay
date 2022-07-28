@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a=5,b=10,c=15;
+    int *ptr=&b;
+    cout<<"a, b and c values : \n";
+    cout<<a<<" "<<b<<" "<<c<<endl;
+    ptr=&a;// ptr is pointing to a
+    *ptr *=2;// *ptr=*ptr*2 =>*ptr=5*2=10 now a would be 10 becauuse ptr having address of a and that ptr changing the content of that address
+    ptr=&b;// now ptr is pointing to b
+    *ptr *=2;// now b would be 20
+    ptr=&c;// ptr is pointing to c
+    *ptr *=2;// now c would be 30
+    cout<<"a, b and c values :\n";
+    cout<<a<<" "<<b<<" "<<c<<endl;// 10 20 30
+    cout<<"*ptr value: "<<*ptr<<endl;//30
+
+    return 0;
+}
